@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cima-eilco-36267": {
+      "hosting": {
+        "cima-eilco": [
+          "cima-eilco-ulco"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cima-eilco-36267"
+  }
+}

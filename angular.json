@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "src/styles.css",
+                "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              ]
+              
+            ,
+            "scripts": [  "./node_modules/jquery/dist/jquery.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -91,8 +96,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "cima-eilco:build:production",
+            "firebaseProject": "cima-eilco-36267",
+            "firebaseHostingSite": "cima-eilco-ulco"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e3684c7c-497c-4c19-be65-f8365619f741"
   }
 }
