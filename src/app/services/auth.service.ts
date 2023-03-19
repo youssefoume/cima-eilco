@@ -23,7 +23,7 @@ export class AuthService {
 
     }, err => {
         alert(err.message);
-        this.router.navigate(['/sign-in']);
+        this.router.navigate(['/sing-in']);
     })
   }
 
@@ -43,7 +43,7 @@ export class AuthService {
   logout() {
     this.fireauth.signOut().then( () => {
       localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/sign-in']);
     }, err => {
       alert(err.message);
     })
@@ -52,7 +52,7 @@ export class AuthService {
   // forgot password
   forgotPassword(email : string) {
       this.fireauth.sendPasswordResetEmail(email).then(() => {
-        this.router.navigate(['/varify-email']);
+        this.router.navigate(['/verify-email']);
       }, err => {
         alert('Something went wrong');
       })
@@ -62,7 +62,7 @@ export class AuthService {
   sendEmailForVarification(user : any) {
     console.log(user);
     user.sendEmailVerification().then((res : any) => {
-      this.router.navigate(['/varify-email']);
+      this.router.navigate(['/verify-email']);
     }, (err : any) => {
       alert('Something went wrong. Not able to send mail to your email.')
     })
@@ -72,7 +72,7 @@ export class AuthService {
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
 
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
       localStorage.setItem('token',JSON.stringify(res.user?.uid));
 
     }, err => {
