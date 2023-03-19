@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "firebase-angular-crud": {
+    "cima-eilco": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/firebase-angular-crud",
+            "outputPath": "dist/cima-eilco",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "firebase-angular-crud:build:production"
+              "browserTarget": "cima-eilco:build:production"
             },
             "development": {
-              "browserTarget": "firebase-angular-crud:build:development"
+              "browserTarget": "cima-eilco:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "firebase-angular-crud:build"
+            "browserTarget": "cima-eilco:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "firebase-angular-crud"
+  "defaultProject": "cima-eilco"
 }
