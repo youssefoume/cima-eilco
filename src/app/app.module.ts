@@ -17,6 +17,10 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { HomeComponent } from './home/home.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,13 +31,15 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     PasswordResetComponent
   ],
   imports: [
+    FontAwesomeModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule
   ],
   providers: [AuthService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]

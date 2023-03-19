@@ -1,31 +1,39 @@
-<div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col"></div>
-        <div class="col-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <h4 class="text-dark text-muted">Register</h4>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email</label>
-                          <input type="email" class="form-control" name="email" [(ngModel)]="email">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" name="password" [(ngModel)]="password">
-                        </div>
-                        <button type="button" class="btn btn-info" (click)="register()">Register</button>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="/sign-in" style="text-decoration: none;">Have an account ? <span class="text-danger">Login</span></a>
-                            </div>
-                        </div>
-                    </form>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <form>
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                <p class="text-white-50 mb-5">To create an account please enter your email and password!</p>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" [(ngModel)]="email"/>
+                  <label class="form-label" for="typeEmailX" >Email</label>
                 </div>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" [(ngModel)]="password"/>
+                  <label class="form-label" for="typePasswordX"  >Password</label>
+                </div>
+    
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="register()">register</button>
+  
+              </div>
+  
+              <div>
+                <p class="mb-0">Do you have an account? <a href="/sign-in" class="text-white-50 fw-bold">Sign In</a>
+                </p>
+              </div>
+            </form>
             </div>
+
+            
+          </div>
         </div>
-        <div class="col"></div>
+      </div>
     </div>
-</div>
+  </section>
