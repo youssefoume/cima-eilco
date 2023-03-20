@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireauth : AngularFireAuth, private router : Router) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router,public jwtHelper: JwtHelperService) { }
 
   // login method
   login(email : string, password : string) {
@@ -42,7 +43,7 @@ export class AuthService {
   // sign out
   logout() {
     this.fireauth.signOut().then( () => {
-      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       this.router.navigate(['/sign-in']);
     }, err => {
       alert(err.message);
@@ -74,10 +75,17 @@ export class AuthService {
 
       this.router.navigate(['/home']);
       localStorage.setItem('token',JSON.stringify(res.user?.uid));
+      console.log(localStorage.getItem('token')); 
 
     }, err => {
       alert(err.message);
     })
+  }
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
 }
