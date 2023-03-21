@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
+import { GoogleAuthProvider} from '@angular/fire/auth'
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireauth : AngularFireAuth, private router : Router,public jwtHelper: JwtHelperService) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router) { }
 
   // login method
   login(email : string, password : string) {
@@ -17,6 +17,7 @@ export class AuthService {
         localStorage.setItem('token','true');
 
         if(res.user?.emailVerified == true) {
+          localStorage.setItem('user',JSON.stringify(res.user));
           this.router.navigate(['home']);
         } else {
           this.router.navigate(['/verify-email']);
@@ -44,6 +45,8 @@ export class AuthService {
   logout() {
     this.fireauth.signOut().then( () => {
       localStorage.removeItem('user');
+      console.log(localStorage.getItem('user'));
+      console.log("hey")
       this.router.navigate(['/sign-in']);
     }, err => {
       alert(err.message);
@@ -61,7 +64,6 @@ export class AuthService {
 
   // email varification
   sendEmailForVarification(user : any) {
-    console.log(user);
     user.sendEmailVerification().then((res : any) => {
       this.router.navigate(['/verify-email']);
     }, (err : any) => {
@@ -81,11 +83,15 @@ export class AuthService {
       alert(err.message);
     })
   }
-  public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    // Check whether the token is expired and return
-    // true or false
-    return !this.jwtHelper.isTokenExpired(token);
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null ? true : false;
   }
+  // public isAuthenticated(): boolean {
+  //   const token = localStorage.getItem('token');
+  //   // Check whether the token is expired and return
+  //   // true or false
+  //   return !this.jwtHelper.isTokenExpired(token);
+  // }
 
 }

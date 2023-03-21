@@ -1,4 +1,4 @@
-import { AuthGuardModule } from '@angular/fire/auth-guard';
+
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,9 +20,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularFireAuthGuardModule,  } from '@angular/fire/compat/auth-guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
-import { AuthGuardService } from './services/auth-guard.service';
-
+import { AuthGuard } from './shared/auth.guard';
+import { SecureInnerPagesGuard } from './shared/secure-inner-pages.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +42,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-  providers: [AuthService,AngularFireAuthGuardModule,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
-    ,{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
-    AuthGuardService
+  providers: [AuthService, AuthGuard, SecureInnerPagesGuard,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [AppComponent]
 })
