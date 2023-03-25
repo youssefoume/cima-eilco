@@ -18,8 +18,9 @@ import { HomeComponent } from './home/home.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { MovieComponent } from './movie/movie.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SingUpComponent,
     HomeComponent,
     VerifyEmailComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    MovieComponent
   ],
   imports: [
-    FontAwesomeModule,
+    HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-  providers: [AuthService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [ApiService ,AuthService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

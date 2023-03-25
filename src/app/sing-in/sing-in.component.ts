@@ -38,6 +38,11 @@ export class SingInComponent {
       this.validateText.email = 'Email is not valid';
     }
 
+    if(this.password !== '' && this.password.length < 8){
+      this.isValide.password = false;
+      this.validateText.password = '8 characters at least';
+    }
+
     if (!Object.values(this.isValide).includes(false)) {
       this.auth.login(this.email, this.password);
       this.email = '';

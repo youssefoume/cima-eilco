@@ -44,13 +44,18 @@ export class SingUpComponent {
       this.validateText.email = 'Email is not valid';
     }
 
+    if(this.password !== '' && this.password.length < 8){
+      this.isValide.password = false;
+      this.validateText.password = '8 characaters at least';
+    }
+
     if(this.password !== this.repassword){
       this.isValide.repassword = false;
       this.validateText.repassword = 'Doesn\'t match password'; 
     }
 
     if (!Object.values(this.isValide).includes(false)) {
-      this.auth.login(this.email, this.password);
+      this.auth.register(this.email, this.password);
       this.email = '';
       this.password = '';
     }

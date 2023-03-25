@@ -215,6 +215,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Button sign in with ]*/
 .btn-google {
+  cursor: pointer;
   font-family: Montserrat-SemiBold;
   font-size: 18px;
   line-height: 1.2;

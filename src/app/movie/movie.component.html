@@ -1,0 +1,8 @@
+<p>Commencez avec cet id <span style="text-decoration: underline;">tt0110413</span> et incrementer ou decrementer</p>
+
+<input type="text" [(ngModel)]="idMovie" (change)="getMovie(idMovie)" placeholder="enter the id of a movie">
+
+<p>id : {{movie?.id}}</p>
+<p>title : {{movie?.title}}</p>
+<p>fullTitle : {{movie?.fullTitle}}</p>
+<p>type : {{movie?.type}}</p>
