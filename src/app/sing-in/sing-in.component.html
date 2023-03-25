@@ -1,97 +1,68 @@
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-dark text-white" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-              <form>
-              <div class="mb-md-5 mt-md-4 pb-5">
-  
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                <p class="text-white-50 mb-5">Please enter your login and password!</p>
-  
-                <div class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" [(ngModel)]="email"/>
-                  <label class="form-label" for="typeEmailX" >Email</label>
-                </div>
-  
-                <div class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" [(ngModel)]="password"/>
-                  <label class="form-label" for="typePasswordX"  >Password</label>
-                </div>
-  
-                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/password-reset">Forgot password?</a></p>
-  
-                <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="login()">Login</button>
-  
-                <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                  <div class="row mt-2">
-                    <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
-                        
-                            <div class="card-body">
-                                <img src="../../../assets/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
-                            </div>
-                       
-                    </a>
-                </div>
-          
-                </div>
-  
-              </div>
-  
-              <div>
-                <p class="mb-0">Don't have an account? <a href="/sign-up" class="text-white-50 fw-bold">Sign Up</a>
-                </p>
-              </div>
-            </form>
-            </div>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+      <form class="login100-form validate-form flex-sb flex-w">
+        <span class="login100-form-title p-b-53">
+          Sign In With
+        </span>
 
-            
-          </div>
+        <a class="btn-google m-b-20" (click)="signInWithGoogle()">
+          <img src="../../assets/icons/icon-google.png" alt="GOOGLE">
+          Google
+        </a>
+
+        <div class="p-t-31 p-b-9">
+          <span class="txt1">
+            Email
+          </span>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- <div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col"></div>
-        <div class="col-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <h4 class="text-dark text-muted">Login</h4>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email</label>
-                          <input type="email" class="form-control" name="email" [(ngModel)]="email">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" name="password" [(ngModel)]="password">
-                        </div>
-                        <button type="button" class="btn btn-info" (click)="login()">Login</button>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="/sign-up" style="text-decoration: none;">Need Account ? <span class="text-danger">Register</span></a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="/password-reset" class="text-dark" style="text-decoration: none;"> Forgot Password ? </a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
-                                <div class="card shadow text-center">
-                                    <div class="card-body">
-                                        <img src="../../../assets/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="wrap-input100 validate-input" [attr.data-validate]="validateText.email" [ngClass]="{'alert-validate' : !isValide.email}">
+          <input class="input100" type="text" name="email" [(ngModel)]="email">
+          <span class="focus-input100"></span>
         </div>
-        <div class="col"></div>
+
+        <div class="p-t-13 p-b-9">
+          <span class="txt1">
+            Password
+          </span>
+
+          <a href="/password-reset" class="txt2 bo1 m-l-5">
+            Forgot?
+          </a>
+        </div>
+        <div class="wrap-input100 validate-input" [attr.data-validate]="validateText.password" [ngClass]="{'alert-validate' : !isValide.password}">
+          <input class="input100" type="password" name="password" [(ngModel)]="password">
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-login100-form-btn m-t-17">
+          <button class="login100-form-btn" (click)="login()">
+            Sign In
+          </button>
+        </div>
+
+        <div class="w-full text-center p-t-55">
+          <span class="txt2">
+            Not a member?
+          </span>
+
+          <a href="/sign-up" class="txt2 bo1">
+            Sign up now
+          </a>
+        </div>
+      </form>
     </div>
-  </div> -->
+  </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/js/animsition.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
