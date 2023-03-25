@@ -20,6 +20,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DataFirestoreService } from './services/data-firestore.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SingUpComponent,
     HomeComponent,
     VerifyEmailComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    PageNotFoundComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -41,7 +45,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-  providers: [AuthService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [AuthService,DataFirestoreService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { SingUpComponent } from './sing-up/sing-up.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { AuthGuard } from './services/auth.guard';
 import { UserGuard } from './services/user.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'sign-up', component: SingUpComponent, canActivate:[UserGuard] },
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'verify-email', component: VerifyEmailComponent},
-  {path: 'password-reset', component: PasswordResetComponent}
+  {path: 'password-reset', component: PasswordResetComponent},
+  {path:'**',component:PageNotFoundComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
