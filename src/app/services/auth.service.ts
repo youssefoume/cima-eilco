@@ -27,6 +27,11 @@ export class AuthService {
     })
   }
 
+  // is Logged in
+  isLoggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
   // register method
   register(email : string, password : string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
@@ -40,13 +45,10 @@ export class AuthService {
   }
 
   // sign out
-  logout() {
-    this.fireauth.signOut().then( () => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/sign-in']);
-    }, err => {
-      alert(err.message);
-    })
+  async logout() {
+    await this.fireauth.signOut();
+    localStorage.removeItem('token');
+    this.router.navigate(['/sign-in']);
   }
 
   // forgot password
