@@ -1,5 +1,8 @@
 <p>home works!</p>
 <h1>From firestore</h1>
+<br>
+<a href="/movie">movies</a>
+<br>
 <div *ngIf="document | async as doc">
     <br>{{ doc.name }}
    <br> {{ doc.mail }}
@@ -7,3 +10,4 @@
   </div>
   
 <a href="#" (click)="logout()">logout</a>
+

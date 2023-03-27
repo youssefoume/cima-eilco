@@ -18,17 +18,13 @@ import { HomeComponent } from './home/home.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
 import { ApiService } from './services/api.service';
-=======
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataFirestoreService } from './services/data-firestore.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
->>>>>>> ddd5436d3b0f39d83a5572d2d65c8fb89562e9b6
 
 @NgModule({
   declarations: [
@@ -38,11 +34,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     VerifyEmailComponent,
     PasswordResetComponent,
-<<<<<<< HEAD
-    MovieComponent
-=======
+    MovieComponent,
     PageNotFoundComponent
->>>>>>> ddd5436d3b0f39d83a5572d2d65c8fb89562e9b6
+
   ],
   imports: [
     HttpClientModule,
@@ -55,11 +49,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-<<<<<<< HEAD
-  providers: [ApiService ,AuthService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
-=======
-  providers: [AuthService,DataFirestoreService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
->>>>>>> ddd5436d3b0f39d83a5572d2d65c8fb89562e9b6
+  providers: [ApiService ,AuthService, DataFirestoreService ,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+
+  // providers: [AuthService,DataFirestoreService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
