@@ -1,15 +1,13 @@
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgForm } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { FormsModule } from '@angular/forms';
 import { SingUpComponent } from './sing-up/sing-up.component';
@@ -21,10 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
 import { ApiService } from './services/api.service';
-
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataFirestoreService } from './services/data-firestore.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +34,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     VerifyEmailComponent,
     PasswordResetComponent,
-    MovieComponent,
-    PageNotFoundComponent
-
+    PageNotFoundComponent,
+    HeaderComponent,
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +51,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-  providers: [ApiService ,AuthService, DataFirestoreService ,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [ApiService, AuthService, DataFirestoreService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
 
   // providers: [AuthService,DataFirestoreService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
 
