@@ -11,25 +11,28 @@ import { UserGuard } from './services/user.guard';
 import { MovieComponent } from './movie/movie.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
-  { path: 'sign-in', component: SingInComponent, canActivate:[UserGuard]},
-  { path: 'sign-up', component: SingUpComponent, canActivate:[UserGuard] },
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  { path: 'verify-email', component: VerifyEmailComponent},
-  { path: 'password-reset', component: PasswordResetComponent},
+  { path: 'sign-in', component: SingInComponent, canActivate: [UserGuard] },
+  { path: 'sign-up', component: SingUpComponent, canActivate: [UserGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'password-reset', component: PasswordResetComponent },
   { path: 'movie', component: MovieComponent },
   { path: '**', component: HomeComponent },
-  {path: 'sign-up', component: SingUpComponent, canActivate:[UserGuard] },
-  {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  {path: 'verify-email', component: VerifyEmailComponent},
-  {path: 'password-reset', component: PasswordResetComponent},
-  {path:'**',component:PageNotFoundComponent},
+  { path: 'sign-up', component: SingUpComponent, canActivate: [UserGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'password-reset', component: PasswordResetComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'movie/:id', component: MovieComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
