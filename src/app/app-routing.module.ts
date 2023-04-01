@@ -12,6 +12,7 @@ import { MovieComponent } from './movie/movie.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchComponent } from './search/search.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 const routes: Routes = [
@@ -22,13 +23,12 @@ const routes: Routes = [
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'movie', component: MovieComponent },
-  { path: '**', component: HomeComponent },
   { path: 'sign-up', component: SingUpComponent, canActivate: [UserGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'movie/:id', component: MovieComponent },
+  { path: 'movie/:id', component: MovieDetailsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 @NgModule({

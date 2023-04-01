@@ -9,13 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent {
   navbg: any;
   constructor(private auth: AuthService){}
-  @HostListener('document:scroll') scrollover() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      this.navbg = { 'background-color': '#000000' }
-    } else {
-      this.navbg = { 'background-color': '#ffffff' }
-    }
-  }
+ 
   logout() {
     this.auth.logout();
   }

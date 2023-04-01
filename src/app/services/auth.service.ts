@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  errorMessage : any = {login : '', register : '', sendEmailForVerification : '', forgotPassword : ''};
+
   constructor(private fireauth : AngularFireAuth, private router : Router) { }
 
   // login method
@@ -22,8 +24,7 @@ export class AuthService {
         }
 
     }, err => {
-        alert(err.message);
-        this.router.navigate(['/sing-in']);
+        this.errorMessage.login = 'The email or password you entered is incorrect';
     })
   }
 
@@ -36,11 +37,10 @@ export class AuthService {
   register(email : string, password : string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
       alert('Registration Successful');
-      this.sendEmailForVarification(res.user);
+      this.sendEmailForVerification(res.user);
       this.router.navigate(['/sign-in']);
     }, err => {
-      alert(err.message);
-      this.router.navigate(['/sign-up']);
+      this.errorMessage.register = 'The email you entered is registered';
     })
   }
 
@@ -56,17 +56,17 @@ export class AuthService {
       this.fireauth.sendPasswordResetEmail(email).then(() => {
         this.router.navigate(['/verify-email']);
       }, err => {
-        alert('Something went wrong');
+        alert('The email you entered isn\'t associated with an account');
       })
   }
 
-  // email varification
-  sendEmailForVarification(user : any) {
+  // email verification
+  sendEmailForVerification(user : any) {
     console.log(user);
     user.sendEmailVerification().then((res : any) => {
       this.router.navigate(['/verify-email']);
     }, (err : any) => {
-      alert('Something went wrong. Not able to send mail to your email.')
+        alert('The email you entered is incorrect');
     })
   }
 

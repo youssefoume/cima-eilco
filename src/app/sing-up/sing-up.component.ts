@@ -11,13 +11,17 @@ export class SingUpComponent {
   email : string = '';
   password : string = '';
   repassword : string = '';
+  username : string = '';
   inputNames : string[] = ['email', 'password', 'repassword'];
-  isValide: any = { email : true , password: true, repassword : true};
-  validateText: any = { email: '', password: '' };
+  isValide: any = { email : true , password: true, repassword : true, username : true};
+  validateText: any = { email: '', password: '', username : '' };
+
+  errorMessage: any;
 
   constructor(private auth : AuthService,private router : Router) { }
 
   ngOnInit(): void {
+    this.errorMessage = this.auth.errorMessage;
   }
 
   signInWithGoogle() {
@@ -27,7 +31,8 @@ export class SingUpComponent {
   }
 
   register() {
-    const inputsElements : string[] = [this.email, this.password, this.repassword];
+    this.errorMessage.register = null;
+    const inputsElements : string[] = [this.email, this.password, this.repassword, this.username];
 
     this.isValide.email = true;
     for(let key of Object.keys(this.isValide)) this.isValide[key] = true;
@@ -56,8 +61,13 @@ export class SingUpComponent {
 
     if (!Object.values(this.isValide).includes(false)) {
       this.auth.register(this.email, this.password);
-      this.email = '';
-      this.password = '';
+      console.log(this.auth.errorMessage.register);
+      if(this.auth.errorMessage.register === ''){
+        this.email = '';
+        this.password = '';
+        this.repassword = '';
+        this.username = '';
+      }
     }
   }
 

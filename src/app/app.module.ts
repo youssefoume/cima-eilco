@@ -17,7 +17,6 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieComponent } from './movie/movie.component';
 import { ApiService } from './services/api.service';
 import { DataFirestoreService } from './services/data-firestore.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -25,6 +24,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { CommonModule } from '@angular/common';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,11 @@ import { SearchComponent } from './search/search.component';
     PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    MovieDetailsComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -49,7 +52,7 @@ import { SearchComponent } from './search/search.component';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [ApiService, AuthService, DataFirestoreService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
 
