@@ -15,14 +15,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="search">Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="search">Search</a>
+          <i class="fa-solid fa-user icon" routerLink="profile"></i>
         </li>
         <li class="nav-item">
-          <i class="fa-solid fa-right-from-bracket" (click)="logout()"
-            style="padding: 12px 12px 0;  cursor: pointer; color: #ffff;"></i>
+          <i class="fa-solid fa-right-from-bracket icon" (click)="logout()"></i>
         </li>
       </ul>
     </div>

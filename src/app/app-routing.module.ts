@@ -13,6 +13,7 @@ import { MovieComponent } from './movie/movie.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchComponent } from './search/search.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { SerieDetailsComponent } from './serie-details/serie-details.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'search', component: SearchComponent },
   { path: 'movie/:id', component: MovieDetailsComponent },
+  { path: 'serie/:id', component: SerieDetailsComponent },
+  { path: 'search/:title', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 @NgModule({

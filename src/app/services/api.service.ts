@@ -37,7 +37,6 @@ export class ApiService {
   // searchmovive
   getSearchMovie(data: any): Observable<any> {
     console.log(data, 'movie#');
-
     return this.http.get(`${this.baseurl2}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
   }
 
@@ -90,5 +89,4 @@ export class ApiService {
   fetchThrillerMovies(): Observable<any> {
     return this.http.get(`${this.baseurl2}/discover/movie?api_key=${this.apikey}&with_genres=53`);
   }
-
 }
