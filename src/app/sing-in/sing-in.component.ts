@@ -11,42 +11,48 @@ import { Component } from '@angular/core';
 export class SingInComponent {
   email: string = '';
   password: string = '';
-  inputNames : string[] = ['email', 'password'];
-  isValide: any = { email : true , password: true, };
+  inputNames: string[] = ['email', 'password'];
+  isValide: any = { email: true, password: true, };
   validateText: any = { email: '', password: '' };
+  errorMessage: any;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) {
+    this.errorMessage = this.auth.errorMessage;
+  }
 
   ngOnInit(): void {
+    this.errorMessage.login = null;
   }
 
   login() {
-    const inputsElements : string[] = [this.email, this.password];
+    const inputsElements: string[] = [this.email, this.password];
 
     this.isValide.email = true;
-    for(let key of Object.keys(this.isValide)) this.isValide[key] = true;
+    for (let key of Object.keys(this.isValide)) this.isValide[key] = true;
 
-    inputsElements.forEach((x,i) => {
-      if(x.trim() === ''){
+    inputsElements.forEach((x, i) => {
+      if (x.trim() === '') {
         this.isValide[this.inputNames[i]] = false;
-        this.validateText[this.inputNames[i]] = `${this.inputNames[i].at(0)?.toUpperCase()}${this.inputNames[i].slice(1)} is required`; 
+        this.validateText[this.inputNames[i]] = `${this.inputNames[i].at(0)?.toUpperCase()}${this.inputNames[i].slice(1)} is required`;
       }
     })
-    
-    if (this.email !== '' && this.email.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null){
+
+    if (this.email !== '' && this.email.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
       this.isValide.email = false;
       this.validateText.email = 'Email is not valid';
     }
 
-    if(this.password !== '' && this.password.length < 8){
+    if (this.password !== '' && this.password.length < 8) {
       this.isValide.password = false;
       this.validateText.password = '8 characters at least';
     }
 
     if (!Object.values(this.isValide).includes(false)) {
       this.auth.login(this.email, this.password);
-      this.email = '';
-      this.password = '';
+      if (this.auth.errorMessage.login === '') {
+        this.email = '';
+        this.password = '';
+      }
     }
   }
 

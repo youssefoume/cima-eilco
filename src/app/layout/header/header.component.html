@@ -1,21 +1,30 @@
-<nav class="navbar navbar-expand-lg fixed-top" [ngStyle]="navbg">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="">Cima-EILCO</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="search">Search</a>
-          </li>
-          <li class="nav-item">
-            <i class="fa-solid fa-right-from-bracket" (click)="logout()" style="padding: 2px;"></i>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #000;">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Cima-EILCO</a>
+    <!-- <ul>
+      <li><a class="navbar-brand" routerLink="">Cima-EILCO</a></li>
+      <li><a class="nav-link active" aria-current="page" routerLink="">Accueil</a></li>
+      <li><a class="nav-link" routerLink="tvseries">TV Séries</a></li>
+      <li><a class="nav-link" routerLink="film">Film</a></li>
+      <li><a class="nav-link" routerLink="favoris">Favoris</a></li>
+    </ul> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="search">Search</a>
+        </li>
+        <li class="nav-item">
+          <i class="fa-solid fa-right-from-bracket" (click)="logout()"
+            style="padding: 12px 12px 0;  cursor: pointer; color: #ffff;"></i>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>

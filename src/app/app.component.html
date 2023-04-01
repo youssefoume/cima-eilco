@@ -1,7 +1,11 @@
 <!-- navbar start  -->
-<div *ngIf="isLoggedIn()">
+<ng-container *ngIf="isLoggedIn()">
 <app-header></app-header>
-</div>
+</ng-container>
 <!-- navbar end  -->
   
   <router-outlet></router-outlet>
+
+<ng-container *ngIf="isLoggedIn()">
+  <app-footer></app-footer>
+</ng-container>

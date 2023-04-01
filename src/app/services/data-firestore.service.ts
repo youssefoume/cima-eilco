@@ -9,11 +9,8 @@ import { Data } from '../models/data';
 export class DataFirestoreService {
 
   
-  constructor(private firestore: AngularFirestore){
-
-    
-    
-  }
+  constructor(private firestore: AngularFirestore){}
+  
   getData(){
     return this.firestore.doc<Data>('data/Yy7aO5t1SYkwblfdT0qA').valueChanges();
   }
