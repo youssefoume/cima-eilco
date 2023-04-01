@@ -1,10 +1,18 @@
-.navbar .navbar-brand
-{
+.navbar .navbar-brand {
     color: #E50914;
     font-weight: bold;
 }
 
-.navbar-nav .nav-item .nav-link
-{
+.navbar-nav .nav-item .nav-link {
+    color: #E50914;
+}
+
+.icon {
+    padding: 12px 12px 0;
+    cursor: pointer;
+    color: #ffff;
+}
+
+.icon:hover {
     color: #E50914;
 }
