@@ -25,6 +25,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { ProfilComponent } from './profil/profil.component';
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
 import { SearchComponent } from './search/search.component';
 import { FavoriteComponent } from './favorite/favorite.component';
@@ -43,7 +44,10 @@ import { FavoriteComponent } from './favorite/favorite.component';
     MovieDetailsComponent,
     SerieDetailsComponent,
     SearchComponent,
+    MovieDetailsComponent,
+    ProfilComponent,
     FavoriteComponent,
+
   ],
   imports: [
     CommonModule,

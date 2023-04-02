@@ -13,6 +13,9 @@ import { MovieComponent } from './movie/movie.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchComponent } from './search/search.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+
+import { ProfilComponent } from './profil/profil.component';
+
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
 
 
@@ -24,8 +27,12 @@ const routes: Routes = [
   { path: 'movie', component: MovieComponent, canActivate: [AuthGuard] },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'password-reset', component: PasswordResetComponent },
+
+  {path: 'profil',component:ProfilComponent,canActivate:[AuthGuard]},
+  { path: 'movie/:id', component: MovieDetailsComponent },
+
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
-  { path: 'movie/:id', component: MovieDetailsComponent, canActivate: [AuthGuard] },
+
   { path: 'serie/:id', component: SerieDetailsComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];

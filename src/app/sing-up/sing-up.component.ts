@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
+import { FileMetaData } from '../models/file';
 import { AuthService } from '../services/auth.service';
+import { FileService } from '../services/file.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -18,10 +22,13 @@ export class SingUpComponent {
 
   errorMessage: any;
 
-  constructor(private auth : AuthService,private router : Router) { }
+  constructor(private fileService: FileService, private fireStorage: AngularFireStorage,private auth : AuthService,private router : Router) { }
+  selectedFiles !: FileList;
+
 
   ngOnInit(): void {
     this.errorMessage = this.auth.errorMessage;
+    
   }
 
   signInWithGoogle() {
@@ -60,7 +67,7 @@ export class SingUpComponent {
     }
 
     if (!Object.values(this.isValide).includes(false)) {
-      this.auth.register(this.email, this.password);
+      this.auth.register(this.email, this.password, this.username);
       console.log(this.auth.errorMessage.register);
       if(this.auth.errorMessage.register === ''){
         this.email = '';
@@ -69,6 +76,44 @@ export class SingUpComponent {
         this.username = '';
       }
     }
+  }
+ 
+  currentFileUpload !: FileMetaData;
+  percentage: number = 0;
+  isUploaded: boolean = false;
+ 
+
+
+  uploadFile() {
+    this.currentFileUpload =  new FileMetaData(this.selectedFiles[0]);
+    const path = 'images/'+this.currentFileUpload.file.name;
+
+    const storageRef = this.fireStorage.ref(path);
+    const uploadTask = storageRef.put(this.selectedFiles[0]);
+
+    uploadTask.snapshotChanges().pipe(finalize( () => {
+       storageRef.getDownloadURL().subscribe(downloadLink => {
+         this.currentFileUpload.id = '';
+         this.currentFileUpload.url = downloadLink;
+         this.currentFileUpload.size = this.currentFileUpload.file.size;
+         this.currentFileUpload.name = this.currentFileUpload.file.name;
+
+         this.fileService.saveMetaDataOfFile(this.currentFileUpload,this.email);
+       })
+       this.ngOnInit();
+    })
+    ).subscribe( (res : any) => {
+       this.percentage = (res.bytesTransferred * 100 / res.totalBytes);
+       if(this.percentage === 100) this.isUploaded = true;
+       console.log(this.percentage);
+    }, err => {
+       console.log('Error occured');
+    });
+
+ }
+
+  selectFile(event: any) {
+    this.selectedFiles = event.target.files;
   }
 
 }
