@@ -3,16 +3,21 @@
     font-weight: bold;
 }
 
-.navbar-nav .nav-item .nav-link {
+.navbar-nav .nav-item {
     color: #E50914;
+}
+
+.nav-link {
+    color: #ffffff;
 }
 
 .icon {
     padding: 12px 12px 0;
-    cursor: pointer;
     color: #ffff;
 }
 
-.icon:hover {
+.icon:hover,
+.nav-link:hover {
+    cursor: pointer;
     color: #E50914;
 }

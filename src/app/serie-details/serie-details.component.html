@@ -3,7 +3,7 @@
     <div class="slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img [src]="getSerieDetailResult?.backdrop_path !== null ? 'https://image.tmdb.org/t/p/original/'+getSerieDetailResult.backdrop_path : 'https://bit.ly/3Gc7RFz'"
+                <img [src]="getSerieDetailResult?.backdrop_path !== null ? 'https://image.tmdb.org/t/p/original'+getSerieDetailResult.backdrop_path : 'https://bit.ly/3Gc7RFz'"
                     class="backdrop-img" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h2>{{getSerieDetailResult.original_title}}</h2>
@@ -45,7 +45,7 @@
                     <div class="col-lg-4" *ngFor="let c of getSerieCastResult">
                         <div class="row mt-2 mb-2">
                             <div class="col-lg-2">
-                                <img src="https://image.tmdb.org/t/p/original/{{c.profile_path}}">
+                                <img src="https://image.tmdb.org/t/p/original{{c.profile_path}}">
                             </div>
                             <div class="col-lg-10">
                                 <h3 class="text-white">{{c.original_name}}</h3>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col-lg-3" *ngIf="getSerieDetailResult?.poster_path">
-            <img src="https://image.tmdb.org/t/p/original/{{getSerieDetailResult.poster_path}}"
+            <img src="https://image.tmdb.org/t/p/original{{getSerieDetailResult.poster_path}}"
                 alt={{getSerieDetailResult?.original_title}}>
         </div>
     </div>

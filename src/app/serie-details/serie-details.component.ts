@@ -24,21 +24,15 @@ export class SerieDetailsComponent implements OnInit {
     let getParamId = this.router.snapshot.paramMap.get('id');
     this.getSerie(getParamId);
     this.getSerieCast(getParamId);
+    
   }
-
-  getIsFavorite(){
-    console.log(this.favoriteResult);
-    this.isFavorite = this.favoriteResult.some(f => f.id === this.getSerieDetailResult.id);
-  }
-
 
   addToFavorites() {
-    let f: Favorite = { id: this.getSerieDetailResult.id, image: this.getSerieDetailResult.poster_path, type: 'Serie' };
-    if (!this.isFavorite) {
-      this.favoriteService.add_favorite(f);
-      this.isFavorite = true;
-    }
-    console.log(this.favoriteResult);
+    // let f: Favorite = { id: this.getSerieDetailResult.id, image: this.getSerieDetailResult.poster_path, type: 'Serie' };
+    // if (!this.isFavorite) {
+    //   this.favoriteService.add_favorite(f);
+    //   this.isFavorite = true;
+    // }
   }
 
   deleteFavorite() {
@@ -48,9 +42,9 @@ export class SerieDetailsComponent implements OnInit {
     }
   }
 
-  getFavorite(id: string) {
-    console.log(this.favoriteService.get_favorite(id));
-  }
+  // getFavorite(id: string) {
+  //   console.log(this.favoriteService.get_favorite(id));
+  // }
 
   getSerie(id: any) {
     this.service.getSerieDetails(id).subscribe(async (result) => {

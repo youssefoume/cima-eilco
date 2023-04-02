@@ -1,5 +1,5 @@
 export interface Favorite {
-    id: number;
-    image: string;
+    idF: number;
+    imageUrl: string;
     type: string;
 }

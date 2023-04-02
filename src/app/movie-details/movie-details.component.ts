@@ -14,7 +14,7 @@ export class MovieDetailsComponent implements OnInit {
 
   getMovieDetailResult: any;
   getMovieCastResult: any[] = [];
-  isFavorite: boolean = true;
+  isFavorite: boolean | undefined;
   favoriteResult: Favorite[] = [];
 
 
@@ -25,33 +25,27 @@ export class MovieDetailsComponent implements OnInit {
     let getParamId = this.router.snapshot.paramMap.get('id');
     this.getMovie(getParamId);
     this.getMovieCast(getParamId);
-    console.log(this.isFavorite);
+    if(getParamId !== null )this.getFavorite(parseInt(getParamId));
   }
-
-  getIsFavorite(){
-    console.log(this.favoriteResult);
-    this.isFavorite = this.favoriteResult.some(f => f.id === this.getMovieDetailResult.id);
-  }
-
 
   addToFavorites() {
-    let f: Favorite = { id: this.getMovieDetailResult.id, image: this.getMovieDetailResult.poster_path, type: 'movie' };
-    if (!this.isFavorite) {
-      this.favoriteService.add_favorite(f);
-      this.isFavorite = true;
-    }
-    console.log(this.favoriteResult);
+    let f: Favorite = { idF: this.getMovieDetailResult.id, imageUrl: this.getMovieDetailResult.poster_path, type: 'movie' };
+    this.favoriteService.add_favorite(f);
   }
 
   deleteFavorite() {
     if (this.isFavorite) {
       this.favoriteService.remove_favorite(this.getMovieDetailResult.id.toString());
-      this.isFavorite = false;
     }
   }
 
-  getFavorite(id: string) {
-    console.log(this.favoriteService.get_favorite(id));
+  getFavorite(id: number) {
+    this.favoriteService.getIsFavorite(id).subscribe(e => {
+      console.log(e);
+      if(e != undefined) this.isFavorite = true;
+      else this.isFavorite = false;
+      console.log(this.isFavorite);
+    });
   }
 
   getMovie(id: any) {
