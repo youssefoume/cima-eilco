@@ -39,12 +39,16 @@ export class MovieDetailsComponent implements OnInit {
     }
   }
 
+  formatDate(){
+    let m = this.getMovieDetailResult.runtime % 60;
+    let h = Math.floor(this.getMovieDetailResult.runtime / 60);
+    return h + " h " + m;
+  }
+
   getFavorite(id: number) {
     this.favoriteService.getIsFavorite(id).subscribe(e => {
-      console.log(e);
       if(e != undefined) this.isFavorite = true;
       else this.isFavorite = false;
-      console.log(this.isFavorite);
     });
   }
 

@@ -28,6 +28,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
 import { SearchComponent } from './search/search.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { MovieComponent } from './movie/movie.component';
+import { TvComponent } from './tv/tv.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     SerieDetailsComponent,
     SearchComponent,
     FavoriteComponent,
+    MovieComponent,
+    TvComponent
   ],
   imports: [
     CommonModule,
