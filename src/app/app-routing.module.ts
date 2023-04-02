@@ -17,6 +17,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { ProfilComponent } from './profil/profil.component';
 
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,9 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
 
   { path: 'serie/:id', component: SerieDetailsComponent, canActivate: [AuthGuard] },
-  { path: '**', component: PageNotFoundComponent },
+  { path: 'favorite', component: FavoriteComponent, canActivate: [AuthGuard] },
+  { path: 'notfound', component: PageNotFoundComponent },
+  { path: '**', redirectTo : 'notfound' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

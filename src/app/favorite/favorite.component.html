@@ -1,1 +1,13 @@
-<p>favorite works!</p>
+<div class="contain mt-5 p-5">
+    <h5>Your favorite</h5>
+    <p>{{getLengthFavorites()}} favorite(s) founded in your favorite</p>
+    <div class="row mt-5">
+        <div class="col-lg-4" *ngFor="let f of favoriteResult">
+            <div class="row">
+                <div class="col-lg-3 mt-4 mb-4">
+                    <img src="https://image.tmdb.org/t/p/original/{{ f.image }}" [routerLink]="['/'+f.type,f.id]" class="rowimg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

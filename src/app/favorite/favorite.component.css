@@ -1,0 +1,17 @@
+.rowimg{
+    height: 500px;
+    cursor: pointer;
+}
+
+.rowimg:hover
+{
+    transform: scale(1.2);
+    animation: 3s ease-in;
+    cursor: pointer;
+}
+
+
+h5
+{
+    color: #ffffff;
+}
