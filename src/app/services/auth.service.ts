@@ -75,6 +75,7 @@ export class AuthService {
      this.data.add_profil(p);}
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('userMail');
     this.router.navigate(['/sign-in']);
   }
 

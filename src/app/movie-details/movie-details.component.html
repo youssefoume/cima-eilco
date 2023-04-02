@@ -8,10 +8,10 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h2>{{getMovieDetailResult.original_title}}</h2>
                     <ng-container *ngIf="isFavorite; else addToFavoritesTemplate">
-                        <a class="btn btn-md" (click)="deleteFavorite()">Delete from Favorites</a>
+                        <a class="btn btn-md" (click)="deleteFavorite()"><i class="fa-solid fa-heart"></i> Delete from Favorites</a>
                     </ng-container>
                     <ng-template #addToFavoritesTemplate>
-                        <a class="btn btn-md" (click)="addToFavorites()">Add To Favorites</a>
+                        <a class="btn btn-md" (click)="addToFavorites()"><i class="fa-regular fa-heart"></i> Add To Favorites</a>
                     </ng-template>
                 </div>
             </div>

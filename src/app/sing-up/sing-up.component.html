@@ -17,7 +17,7 @@
           </span>
         </div>
         <div class="wrap-input100 validate-input" [attr.data-validate]="validateText.email" [ngClass]="{'alert-validate' : !isValide.email}">
-          <input class="input100" type="text" name="email" [(ngModel)]="email">
+          <input class="input100" type="text" name="email" [(ngModel)]="email" (change)="changeUpload()">
           <span class="focus-input100"></span>
         </div>
 
@@ -52,14 +52,14 @@
           <span class="focus-input100"></span>
         </div>
         <div class="p-t-13 p-b-9">
-          <input type="file" class="text-nowrap text-truncate file" [disabled] = "isUploaded"  (change)="selectFile($event)">
+          <input type="file" class="text-nowrap text-truncate file" [disabled] = "isUploaded"  (change)="selectFile($event)" accept="image/*">
           <button type="button" class="btn btn-outline-warning" [disabled] = "isUploaded " (click)="uploadFile()">add picture</button>
       </div>
-      <div class="progress mt-2">
+      <div class="progress mt-2" *ngIf="percentage==100">
         <div class="progress-bar progress-bar-info"
             role="progressbar" attr.aria-valuenow="{{percentage}}"
             aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
-            {{percentage}}%
+            uploaded
         </div>
     </div>
 
