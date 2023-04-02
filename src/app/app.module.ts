@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    ProfilComponent
   ],
   imports: [
     CommonModule,

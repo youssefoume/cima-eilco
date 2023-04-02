@@ -13,6 +13,7 @@ import { MovieComponent } from './movie/movie.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchComponent } from './search/search.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'search', component: SearchComponent },
+  {path: 'profil',component:ProfilComponent,canActivate:[AuthGuard]},
   { path: 'movie/:id', component: MovieDetailsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
