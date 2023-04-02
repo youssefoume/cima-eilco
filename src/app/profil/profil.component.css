@@ -1,13 +1,15 @@
 .padding {
     padding: 3rem !important
 }
-
+.page-container{
+    margin-top: 50px;
+}
 .user-card-full {
     overflow: hidden;
 }
 
 .card {
-    border-radius: 5px;
+    border-radius: 20px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     border: none;
@@ -27,8 +29,8 @@
 }
 
 .bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263);
+        background: -webkit-gradient(linear, left top, right top, from(#0f0f0f), to(#f5072b));
+background:#c05050;
 }
 
 .user-profile {

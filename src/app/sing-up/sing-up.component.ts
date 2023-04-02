@@ -19,16 +19,22 @@ export class SingUpComponent {
   inputNames : string[] = ['email', 'password', 'repassword'];
   isValide: any = { email : true , password: true, repassword : true, username : true};
   validateText: any = { email: '', password: '', username : '' };
-
   errorMessage: any;
 
   constructor(private fileService: FileService, private fireStorage: AngularFireStorage,private auth : AuthService,private router : Router) { }
   selectedFiles !: FileList;
 
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.errorMessage = this.auth.errorMessage;
     
+  }
+
+  changeUpload(){
+    if (this.email !== '' && this.email.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) != null){
+      this.isUploaded = false;
+    }
+    else this.isUploaded = true;
   }
 
   signInWithGoogle() {
@@ -79,12 +85,13 @@ export class SingUpComponent {
   }
  
   currentFileUpload !: FileMetaData;
-  percentage: number = 0;
-  isUploaded: boolean = false;
+  percentage: number | undefined ;
+  isUploaded: boolean = true;
  
 
 
   uploadFile() {
+    this.ngOnInit();
     this.currentFileUpload =  new FileMetaData(this.selectedFiles[0]);
     const path = 'images/'+this.currentFileUpload.file.name;
 
@@ -100,7 +107,7 @@ export class SingUpComponent {
 
          this.fileService.saveMetaDataOfFile(this.currentFileUpload,this.email);
        })
-       this.ngOnInit();
+      
     })
     ).subscribe( (res : any) => {
        this.percentage = (res.bytesTransferred * 100 / res.totalBytes);

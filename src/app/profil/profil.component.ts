@@ -20,13 +20,12 @@ export class ProfilComponent {
 ;
 ngOnInit(){
   const user = localStorage.getItem('user')
-  //const user=JSON.parse(l)
+ 
   if(user!=null){
 
   this.userName=JSON.parse(user).displayName;
   this.photoUrl=JSON.parse(user).photoURL;
-  // this.createdAt=this.transformDate(Number(JSON.parse(user).createdAt)); 
-  // this.lastLoginAt=this.transformDate(Number(JSON.parse(user).lastLoginAt)); 
+
   this.userEmail=JSON.parse(user).email;
   this.getHistoric(JSON.parse(user).uid);
   this.getImageUrl(this.userEmail);
@@ -39,23 +38,22 @@ ngOnInit(){
 
 transformDate(dateInmilliseconds: number){
     // example timestamp for April 1, 2022
-              const date = new Date(dateInmilliseconds ); // multiply by 1000 to convert to milliseconds
-
-              // use the Date object's methods to get the individual components of the date
+              const date = new Date(dateInmilliseconds );
               const year = date.getFullYear();
-              const month = date.getMonth() + 1; // add 1 to account for zero-based indexing
+              const month = date.getMonth() + 1;
               const day = date.getDate();
               const hours = date.getHours();
               const minutes = date.getMinutes();
               const seconds = date.getSeconds();
 
-              // construct the final string in the desired format
               const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
               return formattedDate;
   }
  getHistoric(id:string){
-   return this.data.getAllprofils().subscribe((data:any)=>{
+   this.data.getAllprofils().subscribe((data:any)=>{
+
+    
     data.sort(this.comparerAge);
       
       data.forEach((element:any) => {
@@ -64,7 +62,10 @@ transformDate(dateInmilliseconds: number){
           this.data_historic.push(element);
         }
       });
+      this.data_historic=this.data_historic.slice(0,this.data_historic.length >10  ? 10 : this.data_historic.length);
    });
+ 
+
  }
  getImageUrl(email:string|undefined){
   return this.data.getImage().subscribe((data:any)=>{

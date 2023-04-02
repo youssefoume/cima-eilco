@@ -33,7 +33,7 @@ getAllprofils() {
 getImage() {
 
   
-  return this.firestore.collection('/Upload').valueChanges();
+  return this.firestore.collection('/images').valueChanges();
  
    
  }

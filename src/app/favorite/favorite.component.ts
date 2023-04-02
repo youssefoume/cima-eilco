@@ -8,10 +8,10 @@ import { Favorite } from '../models/favorite';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  
-  favoriteResult:Favorite[] = [];
 
-  constructor(private favoriteService: FavoriteService) {}
+  favoriteResult: Favorite[] = [];
+
+  constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
     this.getFavorites();
@@ -20,15 +20,18 @@ export class FavoriteComponent implements OnInit {
 
   getFavorites() {
     this.favoriteService.getAllFavorites().subscribe(result => {
-      this.favoriteResult = result.map(f => {
-        return {
-          ...f.payload.doc.data() as {}
-        } as Favorite;
+      const u = localStorage.getItem('userMail');
+      console.log(u);
+      
+      this.favoriteResult = result.filter(f => f.payload.doc.id.startsWith(u != null ? u : 'None')).map(f => {
+          return {
+            ...f.payload.doc.data() as {}
+          } as Favorite;
       })
     });
   }
 
-  getLengthFavorites(){
+  getLengthFavorites() {
     return this.favoriteResult.length;
   }
 }

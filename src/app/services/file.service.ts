@@ -23,21 +23,8 @@ export class FileService {
 
      fileMeta.id = this.fireStore.createId();
 
-    this.fireStore.collection('/Upload').add(fileMeta);
+    this.fireStore.collection('/images').add(fileMeta);
     
-  }
-
-  // dislpay all files
-  getAllFiles() {
-    return this.fireStore.collection('/Upload').snapshotChanges();
-  }
-
-  // delete file 
-  deleteFile(fileMeta : FileMetaData) {
-
-    this.fireStore.collection('/Upload').doc(fileMeta.id).delete();
-    this.fireStorage.ref('/images/'+fileMeta.name).delete();
-
   }
 
 }
