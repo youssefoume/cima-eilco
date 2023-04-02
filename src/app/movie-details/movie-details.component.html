@@ -7,7 +7,13 @@
                     class="backdrop-img" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h2>{{getMovieDetailResult.original_title}}</h2>
-                    <a class="btn btn-md">Add to favorite</a>
+                    <ng-container *ngIf="isFavorite; else addToFavoritesTemplate">
+                        <a class="btn btn-md" (click)="deleteFavorite()">Delete from Favorites</a>
+                    </ng-container>
+                    <ng-template #addToFavoritesTemplate>
+                        <a class="btn btn-md" (click)="addToFavorites()">Add To Favorites</a>
+                    </ng-template>
+
                 </div>
             </div>
         </div>

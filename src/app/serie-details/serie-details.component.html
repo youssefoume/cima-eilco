@@ -1,1 +1,64 @@
-<p>serie-details works!</p>
+<div class="contain mt-5">
+
+    <div class="slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img [src]="getSerieDetailResult?.backdrop_path !== null ? 'https://image.tmdb.org/t/p/original/'+getSerieDetailResult.backdrop_path : 'https://bit.ly/3Gc7RFz'"
+                    class="backdrop-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>{{getSerieDetailResult.original_title}}</h2>
+                    <ng-container *ngIf="isFavorite; else loginTemplate">
+                        <a class="btn btn-md" (click)="deleteFavorite()">Delete from Favorites</a>
+                    </ng-container>
+                    <ng-template #loginTemplate>
+                        <a class="btn btn-md" (click)="addToFavorites()">Add To Favorites</a>
+                    </ng-template>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-5">
+        <div class="col-lg-9 p-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="mb-3">Title : {{getSerieDetailResult.original_title}}</p>
+                    <p class="mt-3 mb-3">Full Title : {{getSerieDetailResult.title}}</p>
+                    <p class="mt-3 mb-3">Year : {{getSerieDetailResult.release_date | slice: 0 : 4}}</p>
+                    <p class="mt-3 mb-3">Run Time : {{getSerieDetailResult.runtime}} min</p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="mb-3">Companies : {{getSerieCompanies()}}</p>
+                    <p class="mb-3">Countries : {{getSerieCountries()}}</p>
+                    <p class="mb-3">Genres : {{getSerieGenres()}}</p>
+                    <p class="mb-3">Languages : {{getSerieSpokenLanguages()}}</p>
+                </div>
+            </div>
+            <div class="mt-4 p-4">
+                <h2 class="text-white">Decription</h2>
+                <p class="mt-3 mb-3">{{getSerieDetailResult.overview}}</p>
+            </div>
+            <div class="mt-4 p-4">
+                <h2 class="text-white">Actors List</h2>
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let c of getSerieCastResult">
+                        <div class="row mt-2 mb-2">
+                            <div class="col-lg-2">
+                                <img src="https://image.tmdb.org/t/p/original/{{c.profile_path}}">
+                            </div>
+                            <div class="col-lg-10">
+                                <h3 class="text-white">{{c.original_name}}</h3>
+                                <p class="text-white">{{c.character}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3" *ngIf="getSerieDetailResult?.poster_path">
+            <img src="https://image.tmdb.org/t/p/original/{{getSerieDetailResult.poster_path}}"
+                alt={{getSerieDetailResult?.original_title}}>
+        </div>
+    </div>
+</div>
