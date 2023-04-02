@@ -11,13 +11,16 @@ export class MovieApiServiceService {
   baseurl = "https://api.themoviedb.org/3";
   apikey = "08cc33bd5ae3a747598ce2ad84376e66";
 
-
-  //bannerapidata
-
-  bannerApiData(): Observable<any> {
-    return this.http.get(`${this.baseurl}/trending/all/week?api_key=${this.apikey}`);
+  // TV Series
+  TrendingTVSeries(): Observable<any> {
+    return this.http.get(`${this.baseurl}/tv/popular?api_key=${this.apikey}`);
   }
 
+
+  // bannerapidata
+  bannerApiData(): Observable<any> {
+    return this.http.get(`${this.baseurl}/trending/all/week?api_key=${this.apikey}&page=1`);
+  }
 
   // trendingmovieapidata 
   trendingMovieApiData(): Observable<any> {
@@ -26,8 +29,6 @@ export class MovieApiServiceService {
 
   // searchmovive
   getSearchMovie(data: any): Observable<any> {
-    console.log(data, 'movie#');
-
     return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
   }
 
@@ -36,15 +37,11 @@ export class MovieApiServiceService {
     return this.http.get(`${this.baseurl}/movie/${data}?api_key=${this.apikey}`)
   }
 
-  // getMovieVideo
-  getMovieVideo(data: any): Observable<any> {
-    return this.http.get(`${this.baseurl}/movie/${data}/videos?api_key=${this.apikey}`)
-  }
-
   // getMovieCast
   getMovieCast(data: any): Observable<any> {
     return this.http.get(`${this.baseurl}/movie/${data}/credits?api_key=${this.apikey}`)
   }
+
   // action 
   fetchActionMovies(): Observable<any> {
     return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apikey}&with_genres=28`);
@@ -71,7 +68,6 @@ export class MovieApiServiceService {
   }
 
   // science-fiction:878
-
   fetchScienceFictionMovies(): Observable<any> {
     return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apikey}&with_genres=878`);
   }
@@ -79,6 +75,16 @@ export class MovieApiServiceService {
   // thriller:53
   fetchThrillerMovies(): Observable<any> {
     return this.http.get(`${this.baseurl}/discover/movie?api_key=${this.apikey}&with_genres=53`);
+  }
+
+   // getSeriedatails
+   getSerieDetails(data: any): Observable<any> {
+    return this.http.get(`${this.baseurl}/tv/${data}?api_key=${this.apikey}`)
+  }
+
+  // getSerieCast
+  getSerieCast(data: any): Observable<any> {
+    return this.http.get(`${this.baseurl}/tv/${data}/credits?api_key=${this.apikey}`)
   }
 
 }

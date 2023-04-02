@@ -23,10 +23,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { ProfilComponent } from './profil/profil.component';
+import { SerieDetailsComponent } from './serie-details/serie-details.component';
+import { SearchComponent } from './search/search.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,13 @@ import { ProfilComponent } from './profil/profil.component';
     PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
+    MovieDetailsComponent,
+    SerieDetailsComponent,
     SearchComponent,
     MovieDetailsComponent,
-    ProfilComponent
+    ProfilComponent,
+    FavoriteComponent,
+
   ],
   imports: [
     CommonModule,
@@ -57,9 +63,6 @@ import { ProfilComponent } from './profil/profil.component';
     BrowserAnimationsModule,
   ],
   providers: [ApiService, AuthService, DataFirestoreService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
-
-  // providers: [AuthService,DataFirestoreService,  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

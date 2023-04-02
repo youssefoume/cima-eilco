@@ -3,7 +3,7 @@
     <div class="slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://image.tmdb.org/t/p/original/{{ getMovieDetailResult.backdrop_path }}"
+                <img [src]="getMovieDetailResult?.backdrop_path !== null ? 'https://image.tmdb.org/t/p/original/'+getMovieDetailResult.backdrop_path : 'https://bit.ly/3Gc7RFz'"
                     class="backdrop-img" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h2>{{getMovieDetailResult.original_title}}</h2>
@@ -34,7 +34,7 @@
                 <p class="mt-3 mb-3">{{getMovieDetailResult.overview}}</p>
             </div>
             <div class="mt-4 p-4">
-                <h2 class="text-white">Top Cast</h2>
+                <h2 class="text-white">Actors List</h2>
                 <div class="row">
                     <div class="col-lg-4" *ngFor="let c of getMovieCastResult">
                         <div class="row mt-2 mb-2">
@@ -53,6 +53,6 @@
         <div class="col-lg-3" *ngIf="getMovieDetailResult?.poster_path">
             <img src="https://image.tmdb.org/t/p/original/{{getMovieDetailResult.poster_path}}"
                 alt={{getMovieDetailResult?.original_title}}>
-        </div>    
+        </div>
     </div>
 </div>
