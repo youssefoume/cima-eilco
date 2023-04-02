@@ -50,6 +50,7 @@ export class SingInComponent {
     if (!Object.values(this.isValide).includes(false)) {
       this.auth.login(this.email, this.password);
       if (this.auth.errorMessage.login === '') {
+        localStorage.setItem('userMail', this.email);
         this.email = '';
         this.password = '';
       }

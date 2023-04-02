@@ -13,7 +13,6 @@
                     <ng-template #addToFavoritesTemplate>
                         <a class="btn btn-md" (click)="addToFavorites()">Add To Favorites</a>
                     </ng-template>
-
                 </div>
             </div>
         </div>
@@ -26,7 +25,7 @@
                     <p class="mb-3">Title : {{getMovieDetailResult.original_title}}</p>
                     <p class="mt-3 mb-3">Full Title : {{getMovieDetailResult.title}}</p>
                     <p class="mt-3 mb-3">Year : {{getMovieDetailResult.release_date | slice: 0 : 4}}</p>
-                    <p class="mt-3 mb-3">Run Time : {{getMovieDetailResult.runtime}} min</p>
+                    <p class="mt-3 mb-3">Run Time : {{formatDate()}} min</p>
                 </div>
                 <div class="col-lg-6">
                     <p class="mb-3">Companies : {{getMovieCompanies()}}</p>

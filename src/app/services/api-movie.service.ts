@@ -16,6 +16,14 @@ export class MovieApiServiceService {
     return this.http.get(`${this.baseurl}/tv/popular?api_key=${this.apikey}`);
   }
 
+  movies(): Observable<any> {
+    return this.http.get(`${this.baseurl}/movie/top_rated?api_key=${this.apikey}`);
+  }
+
+  tvs(): Observable<any> {
+    return this.http.get(`${this.baseurl}/tv/top_rated?api_key=${this.apikey}`);
+  }
+
 
   // bannerapidata
   bannerApiData(): Observable<any> {

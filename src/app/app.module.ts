@@ -29,6 +29,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
 import { SearchComponent } from './search/search.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { MovieComponent } from './movie/movie.component';
+import { TvComponent } from './tv/tv.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +46,10 @@ import { FavoriteComponent } from './favorite/favorite.component';
     MovieDetailsComponent,
     SerieDetailsComponent,
     SearchComponent,
-    MovieDetailsComponent,
     ProfilComponent,
     FavoriteComponent,
-
+    MovieComponent,
+    TvComponent
   ],
   imports: [
     CommonModule,

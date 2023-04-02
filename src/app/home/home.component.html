@@ -4,7 +4,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000" *ngFor="let b of bannerResult;let i=index"
         [ngClass]="{active:i===1}">
-        <img src="https://image.tmdb.org/t/p/original/{{ b.backdrop_path }}" class="d-block w-100" alt="...">
+        <img src="https://image.tmdb.org/t/p/original{{ b.backdrop_path }}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h2>{{b.original_title}}</h2>
           <p>{{b.overview}}</p>
@@ -30,7 +30,7 @@
     <h5 class="text-white">Trending Movies</h5>
     <div class="rowposter mt-3 p-2">
       <ng-container *ngFor="let t of trendingMovieResult">
-        <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..."
+        <img src="https://image.tmdb.org/t/p/original{{ t.poster_path }}" class="rowimg largeposter" alt="..."
           [routerLink]="['/movie',t.id]">
       </ng-container>
     </div>
@@ -41,7 +41,7 @@
       <h5 class="text-white">Trending TV Series</h5>
       <div class="rowposter mt-3 p-2">
         <ng-container *ngFor="let u of trendingTVSerieResult">
-          <img src="https://image.tmdb.org/t/p/original/{{u.poster_path}}" class="rowimg largeposter" alt="..."
+          <img src="https://image.tmdb.org/t/p/original{{u.poster_path}}" class="rowimg largeposter" alt="..."
             [routerLink]="['/serie',u.id]">
         </ng-container>
       </div>
@@ -52,7 +52,7 @@
     <h5 class="text-white">Action Movies</h5>
     <div class="rowposter mt-3 p-2">
       <ng-container *ngFor="let a of actionMovieResult">
-        <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}" class="rowimg largeposter" alt="..."
+        <img src="https://image.tmdb.org/t/p/original{{ a.poster_path }}" class="rowimg largeposter" alt="..."
           [routerLink]="['/movie',a.id]">
       </ng-container>
     </div>

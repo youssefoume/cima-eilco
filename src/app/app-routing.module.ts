@@ -18,6 +18,7 @@ import { ProfilComponent } from './profil/profil.component';
 
 import { SerieDetailsComponent } from './serie-details/serie-details.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { TvComponent } from './tv/tv.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'sign-up', component: SingUpComponent, canActivate: [UserGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'movie', component: MovieComponent, canActivate: [AuthGuard] },
+  { path: 'tv', component: TvComponent, canActivate:[AuthGuard] },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'password-reset', component: PasswordResetComponent },
 

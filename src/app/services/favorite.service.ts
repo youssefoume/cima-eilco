@@ -3,50 +3,35 @@ import { Observable, map, retry } from 'rxjs';
 import { AngularFirestore, QuerySnapshot } from '@angular/fire/compat/firestore';
 import { Favorite } from '../models/favorite';
 import { first } from 'rxjs/operators';
+import { user } from '@angular/fire/auth';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
-  existsFavorite: boolean = false;
+  isFavorite: boolean = false;
+  e: any=[];
 
   constructor(private firestore: AngularFirestore) { }
 
-  
-  async isFavoriteExists(id: string) : Promise<boolean> {
-    const favorite  = await this.firestore.collection<Favorite>('favorites', ref => ref.where('id', '==', id)).valueChanges().pipe(first()).toPromise();
-    return favorite == null ? false : favorite.length > 0;
-  }
-
-  
-
-  // Ajouter l'objet de données à la collection
   add_favorite(f: Favorite) {
-    return this.firestore.collection('favoris').add(f);
+    const id = localStorage.getItem('userMail')+'-'+f.idF;
+    return this.firestore.collection('favorite').doc(id).set(f);
   }
 
-  remove_favorite(id : string) {
-    return this.firestore.collection('favoris', ref => ref.where('id', '==', id))
-      .get()
-      .pipe(
-        map((querySnapshot: QuerySnapshot<any>) => {
-          const deletePromises: any[] = [];
-          querySnapshot.forEach((doc) => {
-            deletePromises.push(doc.ref.delete());
-          });
-          return Promise.all(deletePromises);
-        })
-      )
-      .toPromise();
+  remove_favorite(idF : number) {
+    const id = localStorage.getItem('userMail')+'-'+idF;
+    return this.firestore.collection('favorite').doc(id).delete();
   }
 
-  get_favorite(id : string) {
-    return this.firestore.collection('favoris', ref => ref.where('id', '==', id)).snapshotChanges();
+  getIsFavorite(idF : number) {
+    const id = localStorage.getItem('userMail')+'-'+idF;
+    return this.firestore.collection<Favorite>('favorite').doc(id).valueChanges();
   }
 
   getAllFavorites() {
-    return this.firestore.collection('favoris').snapshotChanges();
+    return this.firestore.collection('favorite').snapshotChanges();
   }
 
 }

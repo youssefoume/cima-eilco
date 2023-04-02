@@ -1,6 +1,6 @@
 import { Component, isDevMode } from '@angular/core';
-import { ApiService } from '../services/api.service';
 import { OnInit } from '@angular/core';
+import { MovieApiServiceService } from '../services/api-movie.service';
 
 @Component({
   selector: 'app-movie',
@@ -8,19 +8,17 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
-  movie : any;
-  display : boolean = false;
-  idMovie : string = '';
+  searchResult: any = [];
 
-  constructor(private apiService:ApiService){}
+  constructor(private service: MovieApiServiceService){}
   
   ngOnInit(): void {
+    this.getMovies()
   }
 
-  getMovie(id:string){
-    this.apiService.getMovie(id).subscribe(m => {
-      this.movie = m;
-      this.display = true;
-    });
+  getMovies(){
+    this.service.movies().subscribe(e => this.searchResult = e.results)
   }
 }
+
+

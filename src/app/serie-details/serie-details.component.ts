@@ -24,37 +24,33 @@ export class SerieDetailsComponent implements OnInit {
     let getParamId = this.router.snapshot.paramMap.get('id');
     this.getSerie(getParamId);
     this.getSerieCast(getParamId);
+    if(getParamId !== null )this.getFavorite(parseInt(getParamId));
   }
 
-  getIsFavorite(){
-    console.log(this.favoriteResult);
-    this.isFavorite = this.favoriteResult.some(f => f.id === this.getSerieDetailResult.id);
+  getFavorite(id: number) {
+    this.favoriteService.getIsFavorite(id).subscribe(e => {
+      console.log(e);
+      if(e != undefined) this.isFavorite = true;
+      else this.isFavorite = false;
+      console.log(this.isFavorite);
+    });
   }
 
 
   addToFavorites() {
-    let f: Favorite = { id: this.getSerieDetailResult.id, image: this.getSerieDetailResult.poster_path, type: 'Serie' };
-    if (!this.isFavorite) {
-      this.favoriteService.add_favorite(f);
-      this.isFavorite = true;
-    }
-    console.log(this.favoriteResult);
+    let f: Favorite = { idF: this.getSerieDetailResult.id, imageUrl: this.getSerieDetailResult.poster_path, type: 'serie' };
+    this.favoriteService.add_favorite(f);
   }
 
   deleteFavorite() {
-    if (this.isFavorite) {
-      this.favoriteService.remove_favorite(this.getSerieDetailResult.id.toString());
-      this.isFavorite = false;
-    }
-  }
-
-  getFavorite(id: string) {
-    console.log(this.favoriteService.get_favorite(id));
+    this.favoriteService.remove_favorite(this.getSerieDetailResult.id.toString());
   }
 
   getSerie(id: any) {
     this.service.getSerieDetails(id).subscribe(async (result) => {
       this.getSerieDetailResult = await result;
+      console.log(this.getSerieDetailResult);
+      
     });
   }
 
